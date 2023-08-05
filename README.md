@@ -1,5 +1,5 @@
 
-# Animal Center
+# Animal Central
 
 Animal center is an application that allows the user to acquire credits for pets or animals, and/or adopt pets.
 
