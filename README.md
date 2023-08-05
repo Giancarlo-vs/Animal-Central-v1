@@ -1,8 +1,7 @@
 
 # Animal Central
 
-Animal center is an application that allows the user to acquire credits for pets or animals, and/or adopt pets.
-
+Animal center is an application that allows users to acquire credits to buy pets or any other kind of animal. In adition,  also allows the user to make requests for adopt pets aviables in the AnimalCentral.
 
 
 
