@@ -115,7 +115,14 @@ Make sure you have installed Java SDK 17.
 ```http
   DELETE /petcredit/deleteAll
 ```
+## 3. API Reference to Actuator Option
 
+
+#### Get all the operative information of the App.
+
+```http
+  GET /actuator
+```
 
 
 
