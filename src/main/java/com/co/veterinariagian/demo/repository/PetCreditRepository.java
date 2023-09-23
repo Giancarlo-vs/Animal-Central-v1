@@ -9,6 +9,6 @@ import reactor.core.publisher.Flux;
 public interface PetCreditRepository extends R2dbcRepository<PetCredit, Integer> {
 
     Flux<PetCredit> findByIsActive(boolean isActive);
-
+    Flux<PetCredit> findByDescriptionContaining(String description);
 
 }

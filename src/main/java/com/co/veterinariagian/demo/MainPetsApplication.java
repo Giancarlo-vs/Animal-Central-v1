@@ -13,12 +13,9 @@ public class MainPetsApplication {
 
     @Bean
     ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
-
         ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
-
         initializer.setConnectionFactory(connectionFactory);
         initializer.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("schema1.sql")));
-
         return initializer;
     }
 
@@ -27,7 +24,7 @@ public class MainPetsApplication {
 
         ConnectionFactoryInitializer initializer2 = new ConnectionFactoryInitializer();
 
-        initializer2.setConnectionFactory(connectionFactory2);//1
+        initializer2.setConnectionFactory(connectionFactory2);
         initializer2.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("schema2.sql")));
 
         return initializer2;

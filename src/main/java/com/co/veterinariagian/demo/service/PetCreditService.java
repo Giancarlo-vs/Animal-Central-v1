@@ -2,11 +2,15 @@ package com.co.veterinariagian.demo.service;
 
 import com.co.veterinariagian.demo.model.PetCredit;
 import com.co.veterinariagian.demo.repository.PetCreditRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Optional;
+
+import static org.springframework.kafka.listener.ConsumerAwareRebalanceListener.LOGGER;
 
 @Service
 public class PetCreditService {
@@ -23,6 +27,15 @@ public class PetCreditService {
     }
     public Flux<PetCredit> findAllPetCreditsByActive(Boolean isActive){
         return petCreditRepository.findByIsActive(isActive);
+    }
+    public Flux<PetCredit> findByDescripcion(String description) {
+        return petCreditRepository.findByDescriptionContaining(description)
+                .onErrorResume(throwable -> {
+                    LOGGER.error(throwable, "Error al buscar Creditos por descripcion: " + description);
+                    return Mono.empty();
+                })
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Creditos con descripcion=" + description + " no encontrados").getMostSpecificCause()));
     }
     public Mono<PetCredit> saveNewPetCredit(PetCredit petcredit){
         if (updateAndSaveValidation(petcredit)){

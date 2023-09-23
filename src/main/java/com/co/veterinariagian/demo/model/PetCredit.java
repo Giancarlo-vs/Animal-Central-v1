@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 @Data
 @AllArgsConstructor
-public class PetCredit {
+public class PetCredit implements PetActions {
     @Id
     private Integer idPet;
     private Boolean isActive;
